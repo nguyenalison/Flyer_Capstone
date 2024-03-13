@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset= "UTF-8">
+    <!-- meta is used to add description to website, char encoding, create link preveiws -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flyer Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/sign-up.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<!--    <script src="create-account.js" defer></script>-->
+</head>
+<body>
+<div class="container main">
+    <div class="row">
+        <div class="col-md-6 top-landing-left">
+            <div class="top-landing">
+                <div class="top-landing-left">
+                    <h1 class="welcome">Welcome to  </h1>
+<!--                    <img src="flyer_logo.png" class="logo" alt="logo">-->
+                    <img th:src="@{/css/flyer_logo-removebg-preview.png}" alt="Description of the image" />
+                    <h1 class="welcome">flyer</h1>
+                    <h5 class="login-description">Here is your personal time management tool to <br> keep track of your time when time flies!</h5>
+                </div>
+                <div class="top-landing-right">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 right">
+            <form action="#" th:action="@{/signup-process}" th:object="${userDto}" id="create-account-form" class="input-box" method="post" enctype="utf8">
+                <h2 class="create-account">Create account</h2>
+                <div class="input-field">
+                    <input type="text" th:field="*{firstName}" class="input" id="firstName"  required>
+                    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span><br/>
+                    <label for="firstName">First Name</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" th:field="*{lastName}" class="input" id="lastName"  required>
+                    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span><br/>
+                    <label for="lastName">Last Name</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" th:field="*{userName}" class="input" id="username"  required>
+                    <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></span><br/>
+                    <label for="username"> Username</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" th:field="*{email}" class="input" id="email"  required>
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span><br/>
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" th:field="*{phone}" class="input" id="phone"  required>
+                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span><br/>
+                    <label for="phone">Phone Number</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" th:field="*{password}" class="input" id="pass"  required>
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span><br/>
+                    <label for="pass">Password</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" th:field="*{matchingPassword}" class="input" id="matchingPassword"  required>
+                    <span th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}"></span><br/>
+                    <label for="pass">Password</label>
+                </div>
+                <div class="input-field">
+<!--                    <input type="submit" class="submit btn btn-primary"  value="Create">-->
+                    <input id="submitButton" class="btn btn-primary" type="submit"
+                           value="Create" name="submitButton"/>
+                </div>
+                <div class="signin">
+                    <span>Already have an account? <a href="/calendar/calendar.html">Log in here</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
