@@ -3,9 +3,11 @@ package org.alisonnguyen.flyercapstone.service;
 import lombok.extern.slf4j.Slf4j;
 import org.alisonnguyen.flyercapstone.configuration.UserPrincipal;
 import org.alisonnguyen.flyercapstone.controller.UserDTO;
+import org.alisonnguyen.flyercapstone.model.Calendar;
 import org.alisonnguyen.flyercapstone.model.Role;
 import org.alisonnguyen.flyercapstone.model.User;
 ;
+import org.alisonnguyen.flyercapstone.repository.CalendarRepository;
 import org.alisonnguyen.flyercapstone.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -33,6 +35,10 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private CalendarService calendarService;
+
     @Autowired
     private BCryptPasswordEncoder encoder;
     @Override
@@ -63,8 +69,11 @@ user.getPassword(), mapRolesToAuthorities(user.getRoles()));*/
         User user = modelMapper.map(userDTO, User.class);
         Role role = new Role("ROLE_USER");
         roleService.saveRole(role);
+        Calendar calendar = new Calendar("Work");
+        calendarService.saveCalendar(calendar);
         user.setPassword(encoder.encode(user.getPassword()));
         user.setRoles(Arrays.asList(roleService.findRoleByRoleName("ROLE_USER")));
+        user.setUserCalendars(((calendarService.getAllCalendars())));
         userRepository.save(user);
     }
     /** * In this example login and email has the same values @param email @return

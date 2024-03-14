@@ -93,6 +93,7 @@ generateCalendar = (month, year) => {
 }
 
 generateCalendar(this_month, this_year)
+selectWeek();
 
 // Event listener for the left arrow icon
 // Add event listeners for left and right arrows
@@ -106,8 +107,11 @@ document.querySelector(".bi-arrow-left-circle-fill").addEventListener("click", (
     document.getElementById("this-month").textContent = month_list[this_month];
     document.getElementById("this-year").textContent = this_year;
     generateCalendar(this_month, this_year);
+    selectWeek();
 });
 
+
+// when the user wants to move the calendar forward
 document.querySelector(".bi-arrow-right-circle-fill").addEventListener("click", () => {
     if (this_month === 11) {
         this_month = 0;
@@ -118,8 +122,21 @@ document.querySelector(".bi-arrow-right-circle-fill").addEventListener("click", 
     document.getElementById("this-month").textContent = month_list[this_month];
     document.getElementById("this-year").textContent = this_year;
     generateCalendar(this_month, this_year);
+    selectWeek();
 });
 
+
+// when the user clicks on a week row
+function selectWeek() {
+    document.querySelectorAll('#calendar-body td'). forEach(day =>{
+        day.addEventListener('click', ()=> {
+            document.querySelectorAll('#calendar-body tr').forEach(row => {
+                row.classList.remove('highlighted-row');
+            });
+            day.parentElement.classList.add('highlighted-row');
+        })
+    })
+}
 function generateHourButtons() {
     let hoursContainer = document.getElementById("hours-container");
     hoursContainer.innerHTML = ""; // Clear existing buttons

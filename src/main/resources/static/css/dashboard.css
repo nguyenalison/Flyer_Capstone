@@ -130,6 +130,11 @@ html, body{
     font-weight: bold;
 }
 
+.highlighted-row {
+    background-color: #4d5328; /* Change to your desired highlight color */
+    color: white; /* Change to your desired text color */
+}
+
 /* Cursor pointer for clickable days */
 .days div {
     cursor: pointer;
