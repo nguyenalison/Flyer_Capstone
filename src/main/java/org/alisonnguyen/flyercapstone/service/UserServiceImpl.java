@@ -67,11 +67,13 @@ user.getPassword(), mapRolesToAuthorities(user.getRoles()));*/
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         User user = modelMapper.map(userDTO, User.class);
+
         Role role = new Role("ROLE_USER");
         roleService.saveRole(role);
         Calendar calendar = new Calendar("Work");
         calendarService.saveCalendar(calendar);
         user.setPassword(encoder.encode(user.getPassword()));
+
         user.setRoles(Arrays.asList(roleService.findRoleByRoleName("ROLE_USER")));
         user.setUserCalendars(((calendarService.getAllCalendars())));
         userRepository.save(user);

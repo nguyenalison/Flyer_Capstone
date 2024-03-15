@@ -5,6 +5,8 @@ import org.alisonnguyen.flyercapstone.model.User;
 import org.alisonnguyen.flyercapstone.repository.CalendarRepository;
 import org.alisonnguyen.flyercapstone.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +27,18 @@ public class CalendarServiceImpl  implements CalendarService{
 
     @Override
     @Transactional
-    public void saveCalendar(Calendar calendar){ calendarRepository.save(calendar); }
+    public void saveCalendar(Calendar calendar){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User user = userRepository.findUserByUserName(username);
+
+        if (user != null) {
+            calendar.setUser(user);
+            user.getUserCalendars().add(calendar);
+            userRepository.save(user);
+        }
+        calendarRepository.save(calendar);
+    }
 
     @Override
     @Transactional

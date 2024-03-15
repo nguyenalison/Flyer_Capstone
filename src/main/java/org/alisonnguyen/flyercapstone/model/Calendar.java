@@ -18,6 +18,9 @@ public class Calendar {
     private Long id;
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
     public Calendar(String name) {
         this.name = name;
     }

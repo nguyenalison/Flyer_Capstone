@@ -4,6 +4,11 @@ html, body{
     font-family: Poppins;
 }
 
+.welcome-dash{
+    display: block;
+    margin-left: 10%;
+    align-items: center;
+}
 .container{
     margin-top: 15%;
 }
@@ -148,4 +153,69 @@ html, body{
     color: #fff;
     width: 50px;
     border-radius: 20%;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #111E2B;
+    color: white;
+    font-family: Poppins;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    width: 300px;
+    text-align: center;
+}
+
+.blur{
+    filter: blur(20px);
+}
+
+#popup input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #6D7634;
+    background-color: #111E2B;
+    color: white;
+    box-sizing: border-box;
+}
+
+#popup input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #6D7634;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#popup input[type="submit"]:hover {
+    background-color: rgba(37, 95, 156, 0.937);
+}
+
+.create-cal, .create-event {
+    margin: 2%;
+    font-family: Poppins;
+    color: #fff;
+    border: none;
+    outline: none;
+    height: 45px;
+    background: #6D7634;
+    transition: .4s;
+    border-radius: 10px;
+}
+
+
+
+.popup-background{
+    backdrop-filter: blur(15px);
 }

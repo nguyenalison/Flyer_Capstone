@@ -149,4 +149,20 @@ function generateHourButtons() {
     }
 }
 
-generateHourButtons()
+// generateHourButtons()
+
+function showPopup() {
+    document.getElementById('popup').style.display = 'block';
+    let blur = document.getElementById('blur');
+    blur.classList.toggle('blur');
+}
+
+function submitForm() {
+    var calendarName = document.getElementById('calendarName').value;
+    if (calendarName.trim() === '') {
+        alert('Please enter a calendar name');
+        return false;
+    }
+    return true;
+}
+
