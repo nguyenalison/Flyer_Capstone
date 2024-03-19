@@ -33,7 +33,7 @@ public class CalendarServiceImpl  implements CalendarService{
         User user = userRepository.findUserByUserName(username);
 
         if (user != null) {
-            calendar.setUser(user);
+//            calendar.setUser(user);
             user.getUserCalendars().add(calendar);
             userRepository.save(user);
         }
@@ -42,10 +42,15 @@ public class CalendarServiceImpl  implements CalendarService{
 
     @Override
     @Transactional
-    public void deleteCalendar(String name) {
-        calendarRepository.deleteByName(name);
+    public void deleteCalendar(long id) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String username = authentication.getName();
+//        User user = userRepository.findUserByUserName(username);
+//        List<Calendar> userCalendars = user.getUserCalendars();
+        calendarRepository.deleteById(id);
     }
 
     public List<Calendar> getAllCalendars() {return (List<Calendar>) calendarRepository.findAll();}
+
 
 }

@@ -39,13 +39,21 @@ public class SecurityConfiguration {
         http
                 .authorizeHttpRequests(
                         (auth) -> auth
-                                .requestMatchers("/", "/login*",
-                                        "/css/*", "/js/*", "/sign-up",
-                                        "/signup-process").permitAll()
-                                .requestMatchers("/home").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers("/",
+                                        "/static/**",
+                                        "/css/*", "/js/*",
+                                        "/sign-up",
+                                        "/signup-process",
+                                        "/calendarlist",
+                                        "/addcalendar"
+                                ).permitAll()
+                                .requestMatchers("/dashboard").hasRole("USER")
+                                .requestMatchers("addcalendar").authenticated()
                                 .anyRequest().authenticated()
+
                 ).formLogin(form -> form.loginPage("/login")
                         .loginProcessingUrl("/login")
+                        .failureUrl("/dashboard")
                         .successForwardUrl("/dashboard") // should point to login page.successForwardUrl("/home") // must be in order thymeleaf securityextras work
                         .permitAll()
                 )

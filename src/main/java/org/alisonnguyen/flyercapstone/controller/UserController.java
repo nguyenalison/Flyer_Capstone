@@ -2,6 +2,8 @@ package org.alisonnguyen.flyercapstone.controller;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.alisonnguyen.flyercapstone.repository.CalendarRepository;
+import org.alisonnguyen.flyercapstone.service.CalendarServiceImpl;
 import org.alisonnguyen.flyercapstone.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -20,19 +22,25 @@ public class UserController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
     private UserServiceImpl userDetailsService;
+    private CalendarServiceImpl calendarService;
+
+    @Autowired
+    private CalendarRepository calendarRepository;
+
     @Autowired
     public UserController(UserServiceImpl userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-    @GetMapping("/")
-    private String redirectToLogin()
-    {
-        return "redirect:/login";
-    }
+//    @GetMapping("/")
+//    private String redirectToLogin()
+//    {
+//        return "redirect:/login";
+//    }
     @GetMapping("/sign-up")
     public String signUp(Model model)
     {
         model.addAttribute("userDto", new UserDTO());
+        log.info("Sign up displayed");
         return "sign-up";
     }
     @PostMapping("/signup-process")
@@ -45,7 +53,7 @@ public class UserController {
             return "sign-up";
         }
         userDetailsService.create(userDTO);
-        return "confirmation";
+        return "dashboard";
     }
     /**
      * In order to make code more readable it is good practice to

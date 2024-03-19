@@ -1,3 +1,4 @@
+// window.location.href= "/dashboard";
 let today = new Date();
 console.log(today.getDate())
 let this_month = today.getMonth();
@@ -151,18 +152,84 @@ function generateHourButtons() {
 
 // generateHourButtons()
 
-function showPopup() {
-    document.getElementById('popup').style.display = 'block';
+function showPopup(className) {
+    document.getElementById(className).style.display = 'block';
     let blur = document.getElementById('blur');
     blur.classList.toggle('blur');
+
+    // Add event listener to close popup when clicking outside
+    document.addEventListener('click', closePopupOutside);
+}
+let calendarsVisible = false;
+function showAllCalendars() {
+    if (calendarsVisible) {
+        hideCalendars();
+    } else {
+        fetch('/calendarlist')
+            .then(response => response.json())
+            .then(calendars => {
+                let calendarTable = document.getElementById('calendarTable');
+                calendarTable.innerHTML = ''; // Clear previous content
+                calendars.forEach(calendar => {
+                    let row = calendarTable.insertRow();
+                    let nameCell = row.insertCell(0);
+                    let descriptionCell = row.insertCell(1);
+                    nameCell.textContent = calendar.name;
+                    nameCell.id = `calendar-${calendar.id}`;
+                    descriptionCell.textContent = calendar.description;
+                    let deleteCell = row.insertCell(2); // Add cell for delete icon
+
+                    // Create a delete icon
+                    let deleteIcon = document.createElement('span');
+                    deleteIcon.innerHTML = '&#10006;';
+                    deleteIcon.className = 'delete-icon';
+                    deleteIcon.addEventListener('click', () => deleteCalendar(calendar.id));
+                    nameCell.appendChild(deleteIcon);
+                });
+            });
+        // showPopup('showAllCalendars');
+        calendarsVisible = true;
+        console.log("show all clicked!! ")
+    }
+}
+function deleteCalendar(calendarId) {
+    fetch(`/deletebyid/${calendarId}`, {
+        method: 'DELETE'
+    })
+        .then(() => {
+            // Remove the calendar from the DOM
+            let row = document.getElementById(`calendar-${calendarId}`);
+            if (row) {
+                row.remove();
+                console.log("deleting item: " + `${calendarId}`);
+            }
+        })
+        .catch(error => console.error('Error deleting calendar:', error));
 }
 
+function hideCalendars() {
+    let calendarTable = document.getElementById('calendarTable');
+    calendarTable.innerHTML = ''; // Clear the table content
+    calendarsVisible = false;
+}
+
+function closePopupOutside(event) {
+    if (!document.getElementById('popup').contains(event.target) && !document.getElementById('blur').contains(event.target)) {
+        document.getElementById('popup').style.display = 'none';
+        let blur = document.getElementById('blur');
+        blur.classList.remove('blur');
+
+        // Remove event listener after closing popup
+        document.removeEventListener('click', closePopupOutside);
+    }
+}
 function submitForm() {
     var calendarName = document.getElementById('calendarName').value;
     if (calendarName.trim() === '') {
         alert('Please enter a calendar name');
         return false;
     }
+    console.log("Entered calendar name: " + calendarName);
     return true;
 }
 

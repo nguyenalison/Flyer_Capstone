@@ -9,6 +9,6 @@ import java.util.Set;
 public interface CalendarService {
     public void create(User user);
     public void saveCalendar(Calendar calendar);
-    public void deleteCalendar(String name);
+    public void deleteCalendar(long id);
     public List<Calendar> getAllCalendars();
 }

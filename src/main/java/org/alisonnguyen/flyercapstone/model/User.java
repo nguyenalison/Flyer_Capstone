@@ -29,7 +29,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection <Role> roles = new HashSet<>();
 
-    @OneToMany(targetEntity = Calendar.class, cascade = {CascadeType.ALL})
+    @OneToMany(targetEntity = Calendar.class, orphanRemoval = true, cascade = {CascadeType.ALL})
     private List<Calendar> userCalendars = new ArrayList<>();
 
     public User(String userName, String firstName, String lastName, String email,

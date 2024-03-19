@@ -10,7 +10,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface CalendarRepository extends JpaRepository<Calendar, Long> {
-    @Modifying
-    @Query("DELETE FROM Calendar c WHERE c.name = :name")
-    void deleteByName(@Param("name") String name);
+    void deleteById(@Param("id") Long id);
+    List<Calendar> findAll();
 }
