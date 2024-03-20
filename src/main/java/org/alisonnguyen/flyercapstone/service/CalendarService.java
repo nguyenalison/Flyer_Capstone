@@ -11,4 +11,5 @@ public interface CalendarService {
     public void saveCalendar(Calendar calendar);
     public void deleteCalendar(long id);
     public List<Calendar> getAllCalendars();
+    public Calendar findCalendarByName(String name);
 }

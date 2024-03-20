@@ -5,6 +5,7 @@ import org.alisonnguyen.flyercapstone.model.Calendar;
 import org.alisonnguyen.flyercapstone.repository.CalendarRepository;
 import org.alisonnguyen.flyercapstone.service.CalendarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class CalendarController {
     }
 
 
-    @PostMapping("/addcalendar")
+    @RequestMapping(value = "/dashboard", method = RequestMethod.POST)
     public String createCalendar(@RequestParam("calendarName") String calendarName) {
         Calendar calendar = new Calendar();
         calendar.setName(calendarName);
@@ -38,12 +39,10 @@ public class CalendarController {
     public List<Calendar> getAllCalendars() {
         return calendarService.getAllCalendars();
     }
-//
-//
-//    @DeleteMapping("/deletebyid/{id}")
-//    public void deleteCalendarById(@PathVariable("id") long id) {
-//        System.out.println("BEFORE DELETE BY ID");
-//        calendarRepository.deleteById(id);
-//        System.out.println("AFTER DELETE BY ID");
-//    }
+
+    @DeleteMapping("/deletebyid/{id}")
+    public void deleteCalendar(@PathVariable("id") long id) {
+        calendarService.deleteCalendar(id);
+//        return ResponseEntity.ok().build();
+    }
 }

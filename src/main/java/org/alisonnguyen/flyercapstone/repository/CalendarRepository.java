@@ -12,4 +12,5 @@ import java.util.List;
 public interface CalendarRepository extends JpaRepository<Calendar, Long> {
     void deleteById(@Param("id") Long id);
     List<Calendar> findAll();
+    Calendar findCalendarByName(String name);
 }

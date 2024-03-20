@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/flyer_logo.png" type="image/x-icon">
+    <title>flyer event form</title>
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+<!--    <link rel="stylesheet" href="./event_form.css">-->
+<!--    <link rel="stylesheet" href="./calendar.css">-->
+    <link rel="stylesheet" th:href="@{/css/event.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script th:src="@{/js/event_form.js}" defer></script>
+</head>
+<body>
+<div class="container main">
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+
+        <div class="col-md-6">
+            <h1>new event</h1>
+            <form th:action="@{/event-form}" method="post" class="input-box" id="new-event-form">
+
+                <div class="input-field">
+                    <input type="text" id="eventTitle" name="title" placeholder="title" required>
+<!--                    <label>title</label>-->
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="location" name="location" placeholder="location" required>
+<!--                    <label for="name">name</label>-->
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="startTime" name="start_time" placeholder="start time" required>
+<!--                    <div class="input-group bootstrap-timepicker timepicker">-->
+<!--                        <input id="timepicker" class="form-control" data-template="modal" data-minute-step="1" data-modal-backdrop="true" type="text"/>-->
+<!--                    </div>-->
+
+                    <!--                    <label for="email">email</label>-->
+                </div>
+                <div class="input-field">
+                    <input type="text" id="endTime" name="end_time" placeholder="end time" required>
+<!--                    <label for="notes">notes</label>-->
+                </div>
+                <div class="input-field">
+                    <input type="text" id="notes" name="notes" placeholder="notes" required>
+                    <!--                    <label for="notes">notes</label>-->
+                </div>
+<!--                <div class="input-field">-->
+<!--                    <input type="text" id="calendarName" name="calendar_name" placeholder="calendarName" required>-->
+<!--                    &lt;!&ndash;                    <label for="notes">notes</label>&ndash;&gt;-->
+<!--                </div>-->
+                <div class="input-field">
+                    <input type="submit" class="submit"  value="create event">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+

@@ -43,18 +43,25 @@ public class SecurityConfiguration {
                                         "/static/**",
                                         "/css/*", "/js/*",
                                         "/sign-up",
+                                        "/dashboard",
+                                        "/loginprocessed",
                                         "/signup-process",
                                         "/calendarlist",
-                                        "/addcalendar"
+                                        "/addcalendar",
+                                        "/deletebyid/**",
+                                        "/event-form"
+
                                 ).permitAll()
-                                .requestMatchers("/dashboard").hasRole("USER")
-                                .requestMatchers("addcalendar").authenticated()
+                                .requestMatchers("/dashboard").hasAnyRole("USER")
+                                .requestMatchers("/addcalendar").authenticated()
+                                .requestMatchers("/event-form").fullyAuthenticated()
                                 .anyRequest().authenticated()
 
-                ).formLogin(form -> form.loginPage("/login")
+                ).formLogin(form -> form
+                        .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .failureUrl("/dashboard")
-                        .successForwardUrl("/dashboard") // should point to login page.successForwardUrl("/home") // must be in order thymeleaf securityextras work
+//                        .failureUrl("/dashboard")
+                        .defaultSuccessUrl("/dashboard", true) // should point to login page.successForwardUrl("/home") // must be in order thymeleaf securityextras work
                         .permitAll()
                 )
                 .logout(

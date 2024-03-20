@@ -31,11 +31,11 @@ public class UserController {
     public UserController(UserServiceImpl userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-//    @GetMapping("/")
-//    private String redirectToLogin()
-//    {
-//        return "redirect:/login";
-//    }
+
+    @PostMapping("/loginprocessed")
+    public String loginSuccess() {
+        return "redirect:/dashboard";
+    }
     @GetMapping("/sign-up")
     public String signUp(Model model)
     {
@@ -55,29 +55,18 @@ public class UserController {
         userDetailsService.create(userDTO);
         return "dashboard";
     }
-    /**
-     * In order to make code more readable it is good practice to
-     * use special DTOs for login It also make controllers
-     * less dependent from entities and separate validation from
-     * jpa functionality
-     */
+
     @GetMapping("/login")
     public String getLoginPage()
     {
         log.info("Login page displayed");
         return "login";
     }
-    @RequestMapping("/home")
-    public String getHome()
-    {
-        log.info("home page displayed");
-        return "home";
-    }
 
-    @RequestMapping("/dashboard")
-    public String getDashboard()
-    {
-        log.info("Dashboard displayed");
-        return "dashboard";
-    }
+//    @GetMapping("/dashboard")
+//    public String getDashboard(Model model)
+//    {
+//        log.info("Dashboard displayed");
+//        return "dashboard";
+//    }
 }

@@ -228,3 +228,7 @@ html, body{
     color: red;
     margin-left: 10px;
 }
+
+a {
+    all: unset;
+}

@@ -1,0 +1,89 @@
+body{
+    background-color: #111E2B;
+    color: white;
+    font-family: Poppins;
+    margin: 5% 20% 0 20%;
+}
+
+.container {
+    margin-top: 7%;
+}
+
+
+/* selects input of type text */
+input[type="text"]{
+    font-size: larger;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+button{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+.create-account{
+    margin-bottom: 15px;
+}
+.input-field{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0 10px 0 10px;
+    font-size: 20px;
+    color: #96979c;
+}
+.input{
+    height: 45px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid 6D7634;
+    outline: none;
+    margin-bottom: 30px;
+    color: #c3c4ca;
+}
+.input-box .input-field label{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+    transition: .5s;
+}
+.input-field input:focus ~ label
+{
+    top: -10px;
+    font-size: 13px;
+}
+
+/* selects labels that have class inputfield whos input is valid following */
+.input-field input:valid ~ label
+{
+    top: -10px;
+    font-size: 13px;
+    color: #5d5076;
+}
+.input-field .input:focus, .input-field .input:valid{
+    border-bottom: 1px solid #743ae1;
+}
+.submit{
+    color: #fff;
+    border: none;
+    outline: none;
+    height: 45px;
+    background: #6D7634;
+    border-radius: 5px;
+    transition: .4s;
+}
+
+
+.submit:hover{
+    background: rgba(37, 95, 156, 0.937);
+    color: #fff;
+}
+.signin{
+    text-align: center;
+    font-size: small;
+    margin-top: 25px;
+}

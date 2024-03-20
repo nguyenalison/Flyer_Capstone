@@ -1,4 +1,3 @@
-// window.location.href= "/dashboard";
 let today = new Date();
 console.log(today.getDate())
 let this_month = today.getMonth();
@@ -183,7 +182,7 @@ function showAllCalendars() {
                     let deleteIcon = document.createElement('span');
                     deleteIcon.innerHTML = '&#10006;';
                     deleteIcon.className = 'delete-icon';
-                    deleteIcon.addEventListener('click', () => deleteCalendar(calendar.id));
+                    deleteIcon.addEventListener('click', () => deleteCalendar(calendar.id, row));
                     nameCell.appendChild(deleteIcon);
                 });
             });
@@ -192,17 +191,14 @@ function showAllCalendars() {
         console.log("show all clicked!! ")
     }
 }
-function deleteCalendar(calendarId) {
+
+function deleteCalendar(calendarId, row) {
     fetch(`/deletebyid/${calendarId}`, {
         method: 'DELETE'
     })
         .then(() => {
             // Remove the calendar from the DOM
-            let row = document.getElementById(`calendar-${calendarId}`);
-            if (row) {
-                row.remove();
-                console.log("deleting item: " + `${calendarId}`);
-            }
+            row.remove();
         })
         .catch(error => console.error('Error deleting calendar:', error));
 }
@@ -230,6 +226,10 @@ function submitForm() {
         return false;
     }
     console.log("Entered calendar name: " + calendarName);
+    document.getElementById("addCalendarForm").setAttribute("action", "/dashboard");
     return true;
 }
 
+function createEvent(){
+    window.location.href = 'event_form'
+}

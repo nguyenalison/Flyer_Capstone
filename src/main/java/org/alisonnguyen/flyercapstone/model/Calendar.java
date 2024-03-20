@@ -21,10 +21,6 @@ public class Calendar {
     private Long id;
     private String name;
 
-//    @ManyToOne
-//    @JoinColumn(name="user_id")
-//    private User user;
-
     @OneToMany(targetEntity = Event.class, cascade = {CascadeType.ALL})
     private List<Event> calendarEvent = new ArrayList<>();
     public Calendar(String name) {

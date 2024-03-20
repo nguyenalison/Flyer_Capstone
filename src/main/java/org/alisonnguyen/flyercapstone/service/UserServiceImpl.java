@@ -23,9 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
+
 /**
- * @implNote
- * UserPrincipal class which implements UserDetails interface.
+ * @implNote UserPrincipal class which implements UserDetails interface.
  * This way you get more flexibility and control over user authorization and authentication process.
  */
 @Service
@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private BCryptPasswordEncoder encoder;
+
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -54,23 +55,26 @@ public class UserServiceImpl implements UserService {
 user.getPassword(), mapRolesToAuthorities(user.getRoles()));*/
         return new UserPrincipal(user, roleService.getRolesByUser(user.getId()));
     }
+
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream().map(role -> new
                 SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
-    /** Using model mapper helps to avoid extra coding
+
+    /**
+     * Using model mapper helps to avoid extra coding
+     *
      * @param userDTO
      */
     @Transactional
-    public void create(UserDTO userDTO)
-    {
+    public void create(UserDTO userDTO) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         User user = modelMapper.map(userDTO, User.class);
 
         Role role = new Role("ROLE_USER");
         roleService.saveRole(role);
-        Calendar calendar = new Calendar("Work");
+        Calendar calendar = new Calendar("Default");
         calendarService.saveCalendar(calendar);
         user.setPassword(encoder.encode(user.getPassword()));
 
@@ -78,14 +82,15 @@ user.getPassword(), mapRolesToAuthorities(user.getRoles()));*/
         user.setUserCalendars(((calendarService.getAllCalendars())));
         userRepository.save(user);
     }
-    /** * In this example login and email has the same values @param email @return
+
+    /**
+     * In this example login and email has the same values @param email @return
      */
-    public User findUserByEmail(String email)
-    {
+    public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
-    public User findUserByName(String name)
-    {
+
+    public User findUserByName(String name) {
         return userRepository.findUserByUserName(name);
     }
 }

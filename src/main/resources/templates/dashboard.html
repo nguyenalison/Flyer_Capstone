@@ -54,7 +54,7 @@
         <div class="col-md-6 top-landing-right">
             <div id="hours-container"></div>
             <button class="create-cal" onclick="showPopup('popup')">+ calendar</button>
-            <button class="create-event">+ event</button>
+            <button class="create-event" ><a th:href="@{/event-form}">+event </a></button>
             <button class="calendar-list" onclick="showAllCalendars()">show all calendars</button>
 
         </div>
@@ -62,7 +62,7 @@
     <!-- Pop-up form -->
     <div class="popup-background">
         <div id="popup">
-            <form th:action="@{/addcalendar}" method="post" onsubmit="return submitForm()">
+            <form id="addCalendarForm" th:action="@{/dashboard}" method="post" onsubmit="return submitForm()">
                 <input type="text" id="calendarName" name="calendarName" placeholder="calendar name" required>
                 <input type="submit" value="+ add">
             </form>
