@@ -174,14 +174,24 @@ function showAllCalendars() {
                     let nameCell = row.insertCell(0);
                     let descriptionCell = row.insertCell(1);
                     nameCell.textContent = calendar.name;
+                    nameCell.className = "calendar-row"
                     nameCell.id = `calendar-${calendar.id}`;
                     descriptionCell.textContent = calendar.description;
                     let deleteCell = row.insertCell(2); // Add cell for delete icon
 
-                    // Create a delete icon
+                    // Edit icon
+                    let editIcon = document.createElement('span');
+                    editIcon.innerHTML = '&#9998;'; // Edit icon
+                    editIcon.className = 'edit-icon';
+                    editIcon.addEventListener('click', () => editCalendarName(calendar.id));
+                    nameCell.appendChild(editIcon);
+
+                    // Delete icon
                     let deleteIcon = document.createElement('span');
                     deleteIcon.innerHTML = '&#10006;';
                     deleteIcon.className = 'delete-icon';
+                    nameCell.setAttribute('th:href', `@{/dashboard/${calendar.id}`);
+                    nameCell.setAttribute('method', 'delete');
                     deleteIcon.addEventListener('click', () => deleteCalendar(calendar.id, row));
                     nameCell.appendChild(deleteIcon);
                 });
@@ -192,15 +202,28 @@ function showAllCalendars() {
     }
 }
 
+function editCalendarName(calendarId) {
+    let newName = prompt("Enter the new name for the calendar:");
+    if (newName) {
+        fetch(`/dashboard/${calendarId}?name=${newName}`, { method: 'PUT' })
+            .then(() => {
+                // Update the calendar name in the UI
+                let calendarCell = document.getElementById(`calendar-${calendarId}`);
+                calendarCell.textContent = newName;
+            })
+            .catch(error => console.error('Error updating calendar name:', error));
+    }
+}
+
 function deleteCalendar(calendarId, row) {
-    fetch(`/deletebyid/${calendarId}`, {
-        method: 'DELETE'
-    })
-        .then(() => {
-            // Remove the calendar from the DOM
-            row.remove();
-        })
-        .catch(error => console.error('Error deleting calendar:', error));
+
+    row.remove();
+    // fetch(`/dashboard/${calendarId}`, { method: 'DELETE' })
+    //     .then(() => {
+    //         // Remove the calendar from the DOM
+    //         row.remove();
+    //     })
+    //     .catch(error => console.error('Error deleting calendar:', error));
 }
 
 function hideCalendars() {
@@ -230,6 +253,3 @@ function submitForm() {
     return true;
 }
 
-function createEvent(){
-    window.location.href = 'event_form'
-}

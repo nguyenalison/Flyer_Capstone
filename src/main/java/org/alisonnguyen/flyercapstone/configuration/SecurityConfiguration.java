@@ -49,7 +49,8 @@ public class SecurityConfiguration {
                                         "/calendarlist",
                                         "/addcalendar",
                                         "/deletebyid/**",
-                                        "/event-form"
+                                        "/event-form",
+                                        "edit-calendar-name"
 
                                 ).permitAll()
                                 .requestMatchers("/dashboard").hasAnyRole("USER")

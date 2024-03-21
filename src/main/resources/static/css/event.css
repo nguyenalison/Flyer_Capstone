@@ -39,7 +39,7 @@ button{
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid 6D7634;
+    border-bottom: 1px solid #6D7634;
     outline: none;
     margin-bottom: 30px;
     color: #c3c4ca;
@@ -54,7 +54,7 @@ button{
 .input-field input:focus ~ label
 {
     top: -10px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 /* selects labels that have class inputfield whos input is valid following */
@@ -68,7 +68,7 @@ button{
     border-bottom: 1px solid #743ae1;
 }
 .submit{
-    color: #fff;
+    color: #ffffff;
     border: none;
     outline: none;
     height: 45px;
@@ -86,4 +86,26 @@ button{
     text-align: center;
     font-size: small;
     margin-top: 25px;
+}
+
+.timepicker{
+    color: orange;
+}
+
+.submit-event{
+
+    margin: 20%;
+}
+
+.calendar-selection{
+    display: flex;
+    align-items: center;
+}
+.calendar-button{
+    background-color: orange;
+    color: #ffffff;
+    border-radius: 10px;
+    display: inline;
+    gap: 10px;
+    margin-top: 15px;
 }

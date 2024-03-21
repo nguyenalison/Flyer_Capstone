@@ -36,42 +36,7 @@
 
         <div class="col-md-6">
             <h1>new event</h1>
-            <form th:action="@{/event-form}" method="post" class="input-box" id="new-event-form">
-
-                <div class="input-field">
-                    <input type="text" id="eventTitle" name="title" placeholder="title" required>
-                </div>
-
-                <div class="input-field">
-                    <input type="text" id="location" name="location" placeholder="location" required>
-                </div>
-
-                <div class="input-field">
-                    <input type="text" id="day" name="day" placeholder="day" required>
-                </div>
-
-                <div class="input-field">
-                    <div class='input-group date' id='datetimepicker3'>
-                        <input type='text' class="form-control" id="startTime" name="start_time"
-                               placeholder="start time" required/>
-                        <span class="input-group-addon orange-icon"><i class="fas fa-clock"></i></span>
-                    </div>
-                </div>
-
-                <div class="input-field">
-                    <input type="text" id="endTime" name="end_time" placeholder="end time" required>
-                </div>
-                <div class="input-field">
-                    <input type="text" id="notes" name="notes" placeholder="notes" required>
-                </div>
-
-                <div class="input-field calendar-selection">
-                    <label>Select Calendar:</label>
-                    <select id="calendar-select" name="calendarId" required></select>
-                    <input type="hidden" id="selectedCalendarId" name="selectedCalendarId">
-                    <input type="hidden" id="selectedCalendarName" name="selectedCalendarName">
-                </div>
-
+            <form th:action="@{/edit-calendar-name}" method="put" class="input-box" id="new-event-form">
                 <div class="input-field submit-event">
                     <input type="submit" class="submit" value="create event">
                 </div>
@@ -84,4 +49,3 @@
 
 </body>
 </html>
-

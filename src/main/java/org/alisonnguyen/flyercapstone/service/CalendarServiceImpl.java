@@ -51,4 +51,8 @@ public class CalendarServiceImpl  implements CalendarService{
         return calendarRepository.findCalendarByName(name);
     }
 
+    public Calendar findCalendarById(Long id){
+        return calendarRepository.findCalendarById(id);
+    }
+
 }

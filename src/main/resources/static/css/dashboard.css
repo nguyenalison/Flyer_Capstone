@@ -223,10 +223,22 @@ html, body{
 .rightside{
     margin-left: 20%;
 }
+
+.calendar-row {
+    margin: 20px;
+
+    background-color: #5d5076;
+    border-radius: 10px;
+}
+
 .delete-icon {
     cursor: pointer;
     color: red;
     margin-left: 10px;
+}
+
+.edit-icon{
+    margin-left: 50px;
 }
 
 a {
