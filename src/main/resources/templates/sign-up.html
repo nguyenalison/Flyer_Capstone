@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="col-md-6 right">
-            <form action="#" th:action="@{/signup-process}" th:object="${userDto}" id="create-account-form" class="input-box" method="post" enctype="utf8">
+            <form th:action="@{/signup-process}" th:object="${userDto}" id="create-account-form" class="input-box" method="post" enctype="utf8">
                 <h2 class="create-account">Create account</h2>
                 <div class="input-field">
                     <input type="text" th:field="*{firstName}" class="input" id="firstName"  required>

@@ -1,4 +1,4 @@
-package org.alisonnguyen.flyercapstone.controller;
+package org.alisonnguyen.flyercapstone.controller.dto;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
@@ -7,6 +7,10 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.alisonnguyen.flyercapstone.controller.FieldMatch;
+
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,6 +33,8 @@ public class UserDTO {
     private String password;
     @NotEmpty(message = "Required")
     private String matchingPassword;
+
+    private List<ReadCalendarsDTO> calendars;
     public UserDTO(@NotEmpty String userName, @Pattern(regexp = "[A-Za-z]+$", message = "Only alphabetic allowed") String firstName, @Pattern(regexp = "[A-Za-z]+$", message = "Only alphabetic allowed") String lastName, @Email String email, String phone, @Pattern(regexp = "[0-9]{5}$", message = "Zip code wrong format") String zip, @NotEmpty(message = "Required") String password, @NotEmpty(message = "Required") String matchingPassword) {
         this.userName = userName;
         this.firstName = firstName;

@@ -1,6 +1,8 @@
 package org.alisonnguyen.flyercapstone.controller;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.alisonnguyen.flyercapstone.controller.dto.ModifyCalendarsDTO;
 import org.alisonnguyen.flyercapstone.model.Calendar;
 import org.alisonnguyen.flyercapstone.repository.CalendarRepository;
 import org.alisonnguyen.flyercapstone.service.CalendarService;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,13 +30,14 @@ public class CalendarController {
         this.calendarService = calendarService;
     }
 
-
-    @RequestMapping(value = "/dashboard", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveCalendar", method = RequestMethod.POST)
     public String createCalendar(@RequestParam("calendarName") String calendarName) {
+
         Calendar calendar = new Calendar();
         calendar.setName(calendarName);
         calendarService.saveCalendar(calendar);
-        return "dashboard"; // Redirect to the home page or any other page after creating the calendar
+        log.info("adding calendaer");
+        return "redirect:/dashboard"; // Redirect to the home page or any other page after creating the calendar
     }
 
     @GetMapping("/calendarlist")
@@ -42,12 +46,8 @@ public class CalendarController {
         return calendarService.getAllCalendars();
     }
 
-    //    @DeleteMapping("/dashboard/{id}")
-//    public ResponseEntity<Void> deleteCalendar(@PathVariable("id") long id) {
-//        calendarService.deleteCalendar(id);
-//        return ResponseEntity.ok().build();
-//    }
-    @RequestMapping(value = "/dashboard/{id}", method = RequestMethod.DELETE)
+
+    @RequestMapping(value = "/deleteCalendar/{id}", method = RequestMethod.DELETE)
     public String deleteCalendar(@PathVariable("id") long id) {
         try {
             calendarService.deleteCalendar(id);
@@ -59,14 +59,25 @@ public class CalendarController {
         }
     }
 
+    @GetMapping("/edit-calendar-name")
+    public String getEditCalendarName()
+    {
+        log.info("Edit calendar name displayed");
+        return "edit-calendar-name";
+    }
+
     // Update the calendar name
-    @RequestMapping(value = "/dashboard/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/edit-calendar-name", method = RequestMethod.PUT)
     public String updateCalendarName(@PathVariable("id") long id, @RequestParam("name") String newName) {
         Calendar calendar = calendarRepository.findCalendarById(id);
+        String oldName = calendar.getName();
         if (calendar != null) {
             calendar.setName(newName);
             calendarRepository.save(calendar);
         }
+
+        log.info("Updated calendarName from " + oldName + " to " + calendar.getName())
+        ;
         return "dashboard";
     }
 }

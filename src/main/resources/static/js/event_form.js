@@ -20,7 +20,8 @@ document.getElementById('new-event-form').addEventListener('submit', async funct
             console.error('Failed to create event');
         }
     } catch (error) {
-        console.error('Error creating event:', error);
+        throw new ErrorCreatingEvent('Error creating event:')
+        // console.error('Error creating event:', error);
     }
 });
 

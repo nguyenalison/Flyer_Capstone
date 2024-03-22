@@ -202,7 +202,7 @@ html, body{
     background-color: rgba(37, 95, 156, 0.937);
 }
 
-.create-cal, .create-event, .calendar-list {
+.create-cal, .create-event, .calendar-list, .display-all-events {
     margin: 2%;
     font-family: Poppins;
     color: #fff;
@@ -224,9 +224,14 @@ html, body{
     margin-left: 20%;
 }
 
+.calendar-row-border{
+    border: 1px solid #ccc;
+    padding-bottom: 5px;
+    border-radius: 10px;
+}
+
 .calendar-row {
     margin: 20px;
-
     background-color: #5d5076;
     border-radius: 10px;
 }
@@ -235,6 +240,7 @@ html, body{
     cursor: pointer;
     color: red;
     margin-left: 10px;
+    /*border: 1px solid #ccc;*/
 }
 
 .edit-icon{
@@ -244,3 +250,4 @@ html, body{
 a {
     all: unset;
 }
+

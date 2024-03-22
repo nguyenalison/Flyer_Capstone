@@ -2,6 +2,7 @@ package org.alisonnguyen.flyercapstone.controller;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import org.alisonnguyen.flyercapstone.exceptions.CheckValidationException;
 import org.springframework.beans.BeanWrapperImpl;
 
 public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object> {
@@ -27,7 +28,7 @@ public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Obje
             valid = firstObj == null && secondObj == null || firstObj != null &&
                     firstObj.equals(secondObj);
         } catch (final Exception ignore) {
-// we can ignore
+            throw new CheckValidationException("Error Validating...");
         }
         if (!valid) {
             context.buildConstraintViolationWithTemplate(message)

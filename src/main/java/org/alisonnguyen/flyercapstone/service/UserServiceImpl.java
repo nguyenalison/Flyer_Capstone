@@ -2,12 +2,11 @@ package org.alisonnguyen.flyercapstone.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.alisonnguyen.flyercapstone.configuration.UserPrincipal;
-import org.alisonnguyen.flyercapstone.controller.UserDTO;
+import org.alisonnguyen.flyercapstone.controller.dto.UserDTO;
 import org.alisonnguyen.flyercapstone.model.Calendar;
 import org.alisonnguyen.flyercapstone.model.Role;
 import org.alisonnguyen.flyercapstone.model.User;
 ;
-import org.alisonnguyen.flyercapstone.repository.CalendarRepository;
 import org.alisonnguyen.flyercapstone.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -72,14 +71,13 @@ user.getPassword(), mapRolesToAuthorities(user.getRoles()));*/
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         User user = modelMapper.map(userDTO, User.class);
 
-        Role role = new Role("ROLE_USER");
-        roleService.saveRole(role);
         Calendar calendar = new Calendar("Default");
         calendarService.saveCalendar(calendar);
+//        calendar.setUser(user);
         user.setPassword(encoder.encode(user.getPassword()));
 
         user.setRoles(Arrays.asList(roleService.findRoleByRoleName("ROLE_USER")));
-        user.setUserCalendars(((calendarService.getAllCalendars())));
+//        user.setCalendars(((calendarService.getAllCalendars())));
         userRepository.save(user);
     }
 

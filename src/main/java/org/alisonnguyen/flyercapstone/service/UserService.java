@@ -1,6 +1,6 @@
 package org.alisonnguyen.flyercapstone.service;
 
-import org.alisonnguyen.flyercapstone.controller.UserDTO;
+import org.alisonnguyen.flyercapstone.controller.dto.UserDTO;
 import org.alisonnguyen.flyercapstone.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

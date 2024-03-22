@@ -7,9 +7,12 @@ import org.alisonnguyen.flyercapstone.repository.CalendarRepository;
 import org.alisonnguyen.flyercapstone.service.CalendarService;
 import org.alisonnguyen.flyercapstone.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -56,51 +59,36 @@ public class EventController {
         return "dashboard.html";
     }
 
+    @GetMapping("/events")
+    public String getAllEvents(Model model)
+    {
+        log.info("display all events");
+        List<Event> events = eventService.getAllEvents();
+        model.addAttribute("events", events);
+        return "events";
+    }
 
-//    @PostMapping("/event-form")
-//    public String createEvent(@ModelAttribute Event event, @RequestParam("calendarId") Long calendarId) {
-////        // Set the selected calendarId for the event
-////        event.setId(calendarId);
-////
-////        // Save the event
-////        eventService.saveEvent(event);
-////
-////        // Redirect to the calendar page or wherever appropriate
-//        Calendar calendar = calendarService.findCalendarById(calendarId);
-//
-//        Event event = new Event();
-//
-//        return "dashboard";
-//    }
+    @GetMapping("/delete/{id}")
+    public String deleteEvent(@PathVariable(name="id") Long id){
+        log.info("entering delete event with id: " + id);
+        eventService.deleteEvent(id);
 
-//    public String createEvent(@RequestParam("calendarId") Long calendarId,
-//                              @RequestParam("title") String title,
-//                              @RequestParam("location") String location,
-//                              @RequestParam("startTime") String startTime,
-//                              @RequestParam("endTime") String endTime,
-//                              @RequestParam("notes") String notes) {
-//        Calendar calendar = calendarService.findCalendarById(calendarId);
-//        if (calendar == null) {
-//            // Handle calendar not found
-//        }
-//
-//        Event event = new Event();
-//        event.setTitle(title);
-//        event.setLocation(location);
-//        event.setStart_time(startTime);
-//        event.setEnd_time(endTime);
-//        event.setNotes(notes);
-//        event.setCalendar(calendar);
-//
-//        eventService.saveEvent(event);
-//
-//        return "dashboard";
-//    }
+        return "redirect:/dashboard";
+    }
 
-//    @GetMapping("/event-form")
-//    public String showEventForm(Model model) {
-//        List<Calendar> calendars = calendarService.getAllCalendars();
-//        model.addAttribute("calendars", calendars);
-//        return "event-form";
-//    }
+    @GetMapping("/edit/{id}")
+    public String editEvent(@PathVariable(name="id") Long id){
+        ModelAndView editView = new ModelAndView("edit-event-form");
+        Event event = eventService.findEventById(id);
+        editView.addObject("event", event);
+        log.info("entering delete event with id: " + id);
+
+        return "edit-event-form";
+    }
+
+    @PostMapping("/save")
+    public String saveProduct(@ModelAttribute("event") Event event){
+        eventService.saveEvent(event);
+        return "redirect:/";
+    }
 }

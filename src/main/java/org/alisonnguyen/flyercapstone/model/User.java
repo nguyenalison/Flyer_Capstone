@@ -29,9 +29,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection <Role> roles = new HashSet<>();
 
-    @OneToMany(targetEntity = Calendar.class, orphanRemoval = true, cascade = {CascadeType.ALL})
-    private List<Calendar> userCalendars = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Calendar> calendars = new ArrayList<>();
     public User(String userName, String firstName, String lastName, String email,
                 String phone, String password ) {
         this.userName = userName;

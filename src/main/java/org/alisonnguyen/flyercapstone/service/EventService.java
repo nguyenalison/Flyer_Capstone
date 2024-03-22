@@ -2,12 +2,12 @@ package org.alisonnguyen.flyercapstone.service;
 
 import org.alisonnguyen.flyercapstone.model.Event;
 
-public interface EventService {
-//    public void create(Calendar calendar);
+import java.util.List;
 
+public interface EventService {
     public void saveEvent(Event event);
-//
-//    public void deleteEvent(String name);
-//
-//    public List<Event> getAllEvents();
+    public List<Event> getAllEvents();
+    public void deleteEvent(long id);
+
+    public Event findEventById(Long id);
 }

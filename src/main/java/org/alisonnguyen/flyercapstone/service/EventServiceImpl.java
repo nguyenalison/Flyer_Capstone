@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class EventServiceImpl implements EventService{
     @Autowired
@@ -19,9 +21,17 @@ public class EventServiceImpl implements EventService{
     @Transactional
     public void saveEvent(Event event){
 
-//        if (calendarRepository.findCalendarByName(event.getCalendar_name()) == null) {
             eventRepository.save(event);
-//        }
-//        calendarRepository.save(calendar);
+
     }
+    @Override
+    public List<Event> getAllEvents() {
+        return eventRepository.findAll();
+    }
+
+    public void deleteEvent(long id){
+        eventRepository.deleteById(id);
+    }
+
+    public Event findEventById(Long id) { return eventRepository.findEventById(id);}
 }

@@ -29,7 +29,7 @@ public class SecurityConfiguration {
         return auth;
     }
     //beans
-//bcrypt bean definition
+   //bcrypt bean definition
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(11);
@@ -43,25 +43,33 @@ public class SecurityConfiguration {
                                         "/static/**",
                                         "/css/*", "/js/*",
                                         "/sign-up",
+                                        "/home",
                                         "/dashboard",
                                         "/loginprocessed",
                                         "/signup-process",
                                         "/calendarlist",
                                         "/addcalendar",
-                                        "/deletebyid/**",
+                                        "/delete/**",
                                         "/event-form",
-                                        "edit-calendar-name"
+                                        "/edit-calendar-name",
+                                        "/saveCalendar",
+                                        "/events",
+                                        "/edit-event-form",
+                                        "/edit/**"
 
                                 ).permitAll()
                                 .requestMatchers("/dashboard").hasAnyRole("USER")
                                 .requestMatchers("/addcalendar").authenticated()
                                 .requestMatchers("/event-form").fullyAuthenticated()
+                                .requestMatchers("/dashboard/saveCalendar").fullyAuthenticated()
+                                .requestMatchers("/display-all-events").fullyAuthenticated()
+                                .requestMatchers("/delete/**").fullyAuthenticated()
+                                .requestMatchers("edit/**").fullyAuthenticated()
                                 .anyRequest().authenticated()
 
                 ).formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-//                        .failureUrl("/dashboard")
                         .defaultSuccessUrl("/dashboard", true) // should point to login page.successForwardUrl("/home") // must be in order thymeleaf securityextras work
                         .permitAll()
                 )

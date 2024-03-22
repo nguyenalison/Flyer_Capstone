@@ -25,6 +25,11 @@ public class CalendarServiceImpl  implements CalendarService{
         userRepository.save(user);
     }
 
+    @Autowired
+    public CalendarServiceImpl(CalendarRepository calendarRepository) {
+        this.calendarRepository = calendarRepository;
+    }
+
     @Override
     @Transactional
     public void saveCalendar(Calendar calendar){
@@ -32,10 +37,7 @@ public class CalendarServiceImpl  implements CalendarService{
         String username = authentication.getName();
         User user = userRepository.findUserByUserName(username);
 
-        if (user != null) {
-            user.getUserCalendars().add(calendar);
-            userRepository.save(user);
-        }
+        calendar.setUser(user); // Set the user for the calendar
         calendarRepository.save(calendar);
     }
 

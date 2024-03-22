@@ -2,6 +2,7 @@ package org.alisonnguyen.flyercapstone.controller;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.alisonnguyen.flyercapstone.controller.dto.UserDTO;
 import org.alisonnguyen.flyercapstone.repository.CalendarRepository;
 import org.alisonnguyen.flyercapstone.service.CalendarServiceImpl;
 import org.alisonnguyen.flyercapstone.service.UserServiceImpl;
@@ -36,6 +37,12 @@ public class UserController {
     public String loginSuccess() {
         return "redirect:/dashboard";
     }
+
+//    @RequestMapping(value = "/loginprocessed", method = RequestMethod.POST)
+//    public String processLogin(){
+//        return "redirect:/dashboard";
+//    }
+
     @GetMapping("/sign-up")
     public String signUp(Model model)
     {
@@ -47,13 +54,19 @@ public class UserController {
     public String signupProcess(@Valid @ModelAttribute ("userDto") UserDTO
                                         userDTO, BindingResult bindingResult)
     {
-        if(bindingResult.hasErrors())
-        {
-            log.warn("Wrong attempt");
-            return "sign-up";
+        try{
+            if(bindingResult.hasErrors())
+            {
+                log.warn("Wrong attempt");
+                return "sign-up";
+            }
+            userDetailsService.create(userDTO);
+            return "login";
+        }catch (Exception e){
+            log.error("Error occurred during signup process: " + e.getMessage(), e);
+            return "error"; // You can redirect to an error page or handle the error accordingly
         }
-        userDetailsService.create(userDTO);
-        return "dashboard";
+
     }
 
     @GetMapping("/login")
@@ -63,10 +76,4 @@ public class UserController {
         return "login";
     }
 
-//    @GetMapping("/dashboard")
-//    public String getDashboard(Model model)
-//    {
-//        log.info("Dashboard displayed");
-//        return "dashboard";
-//    }
 }

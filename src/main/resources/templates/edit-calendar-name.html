@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/flyer_logo.png" type="image/x-icon">
-    <title>flyer event form</title>
+    <title>edit calendar name</title>
     <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
     <!--    <link rel="stylesheet" href="./event_form.css">-->
     <!--    <link rel="stylesheet" href="./calendar.css">-->
@@ -17,16 +17,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
           rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
-    <script>
-        $(function () {
-            $('#datetimepicker3').datetimepicker({
-                format: 'LT'
-            });
-            console.log("DateTimePicker initialized");
-        });
-    </script>
-    <script th:src="@{/js/event_form.js}" defer></script>
+    <script th:src="@{/js/update.js}" defer></script>
 </head>
 <body>
 <div class="container main">
@@ -35,10 +26,14 @@
         </div>
 
         <div class="col-md-6">
-            <h1>new event</h1>
-            <form th:action="@{/edit-calendar-name}" method="put" class="input-box" id="new-event-form">
+            <h1>edit calendar name</h1>
+            <form th:action="@{/edit-calendar-name}" method="put" id="edit-calendar-form">
+                <div class="input-field">
+                    <input type="text" id="calendarName" name="calendarName" placeholder="name" required>
+                </div>
+
                 <div class="input-field submit-event">
-                    <input type="submit" class="submit" value="create event">
+                    <input type="submit" class="submit" value="edit name">
                 </div>
             </form>
             <button ><a th:href="@{/dashboard}"> < back to dash </a></button>
