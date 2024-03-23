@@ -55,7 +55,8 @@ public class SecurityConfiguration {
                                         "/saveCalendar",
                                         "/events",
                                         "/edit-event-form",
-                                        "/edit/**"
+                                        "/edit/**",
+                                        "/update/{id}"
 
                                 ).permitAll()
                                 .requestMatchers("/dashboard").hasAnyRole("USER")
@@ -65,6 +66,7 @@ public class SecurityConfiguration {
                                 .requestMatchers("/display-all-events").fullyAuthenticated()
                                 .requestMatchers("/delete/**").fullyAuthenticated()
                                 .requestMatchers("edit/**").fullyAuthenticated()
+                                .requestMatchers("update/**").fullyAuthenticated()
                                 .anyRequest().authenticated()
 
                 ).formLogin(form -> form

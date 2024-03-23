@@ -37,7 +37,7 @@
         <td th:text="${event.calendar_name}"></td>
         <td>
 <!--            <button class="btn btn-primary" data-event-id="${event.id}">Update</button> &lt;!&ndash; Update button &ndash;&gt;-->
-            <a th:href="@{'/edit/' + ${event.id}}" class="btn btn-danger" role="button"> edit</a>
+            <a th:href="@{'/edit/' + ${event.id}}" class="btn btn-primary" role="button"> edit</a>
             <a th:href="@{'/delete/' + ${event.id}}" class="btn btn-danger" role="button"> delete</a>
 <!--            <button class="btn btn-danger">Delete</button> &lt;!&ndash; Delete button &ndash;&gt;-->
         </td>

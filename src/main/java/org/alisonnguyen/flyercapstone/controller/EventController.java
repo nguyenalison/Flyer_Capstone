@@ -7,6 +7,7 @@ import org.alisonnguyen.flyercapstone.repository.CalendarRepository;
 import org.alisonnguyen.flyercapstone.service.CalendarService;
 import org.alisonnguyen.flyercapstone.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -56,7 +57,7 @@ public class EventController {
         event.setCalendar_name(calendar.getName());
         eventService.saveEvent(event);
         log.info("creating new event: ");
-        return "dashboard.html";
+        return "dashboard";
     }
 
     @GetMapping("/events")
@@ -77,18 +78,13 @@ public class EventController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editEvent(@PathVariable(name="id") Long id){
-        ModelAndView editView = new ModelAndView("edit-event-form");
+    public String editEvent(@PathVariable(name="id") Long id, Model model){
         Event event = eventService.findEventById(id);
-        editView.addObject("event", event);
-        log.info("entering delete event with id: " + id);
-
+        model.addAttribute("event", event);
+        log.info("PRINTING EVENT: " + event.getTitle() + event.getId());
+        log.info("entering edit event with id: " + id);
+        eventService.deleteEvent(id);
         return "edit-event-form";
     }
 
-    @PostMapping("/save")
-    public String saveProduct(@ModelAttribute("event") Event event){
-        eventService.saveEvent(event);
-        return "redirect:/";
-    }
 }

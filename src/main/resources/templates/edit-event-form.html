@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/flyer_logo.png" type="image/x-icon">
-    <title>flyer event form</title>
+    <title>edit event form</title>
     <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
     <!--    <link rel="stylesheet" href="./event_form.css">-->
     <!--    <link rel="stylesheet" href="./calendar.css">-->
@@ -18,14 +18,6 @@
           rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
-    <script>
-        $(function () {
-            $('#datetimepicker3').datetimepicker({
-                format: 'LT'
-            });
-            console.log("DateTimePicker initialized");
-        });
-    </script>
     <script th:src="@{/js/event_form.js}" defer></script>
 </head>
 <body>
@@ -36,33 +28,32 @@
 
         <div class="col-md-6">
             <h1>new event</h1>
-            <form th:action="@{/event-form}" th:object=" ${events}" method="post" class="input-box" id="new-event-form">
-
+            <form th:action="@{'/edit/' + ${event.id}}" method="post" class="input-box" id="new-event-form">
+                <input type="hidden" name="_method" value="put">
                 <div class="input-field">
-                    <input type="text" id="eventTitle" name="title" placeholder="title" required>
+                    <input type="text" id="eventTitle" name="title" placeholder="title" th:value="${event.title}" required>
                 </div>
 
                 <div class="input-field">
-                    <input type="text" th:field="*{event.location}" id="location" name="location" placeholder="location" required>
+                    <input type="text" id="location" name="location" placeholder="location" th:value="${event.location}" required>
                 </div>
 
                 <div class="input-field">
-                    <input type="text" id="day" name="day" placeholder="day" required>
+                    <input type="text" id="day" name="day" placeholder="day" required th:value="${event.day}">
                 </div>
 
                 <div class="input-field">
                     <div class='input-group date' id='datetimepicker3'>
-                        <input type='text' class="form-control" id="startTime" name="start_time"
-                               placeholder="start time" required/>
+                        <input type='text' class="form-control" id="startTime" name="start_time"  placeholder="start time" required th:value="${event.start_time}"/>
                         <span class="input-group-addon orange-icon"><i class="fas fa-clock"></i></span>
                     </div>
                 </div>
 
                 <div class="input-field">
-                    <input type="text" id="endTime" name="end_time" placeholder="end time" required>
+                    <input type="text" id="endTime" name="end_time" placeholder="end time" required th:value="${event.end_time}">
                 </div>
                 <div class="input-field">
-                    <input type="text" id="notes" name="notes" placeholder="notes" required>
+                    <input type="text" id="notes" name="notes" placeholder="notes" required th:value="${event.notes}">
                 </div>
 
                 <div class="input-field calendar-selection">
