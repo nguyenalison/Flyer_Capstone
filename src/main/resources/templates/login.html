@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset= "UTF-8">
-    <!-- meta is used to add description to website, char encoding, create link preveiws -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flyer Login</title>
+    <link rel="shortcut icon" type="image/x-icon" href="flyer0fav-icon.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/sign-up.css}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
 </head>
-<body>
-<br><br>
 <nav id="menu">
     <ul>
-        <li><a th:href="@{/login}">Login</a></li>
-        <li><a th:href="@{/sign-up}">Sign Up</a></li>
+        <li><a th:href="@{/login}">login</a></li>
+        <li><a th:href="@{/sign-up}">sign Up</a></li>
     </ul>
 </nav>
+<body>
+
 <div class="container main">
     <div class="row">
         <div class="col-md-6 top-landing-left">
             <div class="top-landing">
                 <div class="top-landing-left">
-                    <h1 class="welcome">Welcome to  </h1>
-                    <!--                    <img src="flyer_logo.png" class="logo" alt="logo">-->
-                    <img th:src="@{/css/flyer_logo-removebg-preview.png}" alt="Description of the image" />
-                    <h1 class="welcome">flyer</h1>
+                    <h1 class="welcome">Welcome to </h1>
+                    <img th:src="@{/css/flyer-icon.png}" alt="Description of the image" />
+                    <h1 class="welcome-flyer">flyer</h1>
                     <h5 class="login-description">Here is your personal time management tool to <br> keep track of your time when time flies!</h5>
-                </div>
-                <div class="top-landing-right">
                 </div>
             </div>
         </div>
         <div class="col-md-6 right">
-            <form class="form-signin" method="post" action="#" th:action="@{/loginprocessed}">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <div class="input-field">
-                    <label for="username" >Username</label>
-                    <input type="text" id="username" name="username" class="input" required="" autofocus="">
-                </div>
-                <div class="input-field">
-                    <label for="password" >Password</label>
-                    <input type="password" id="password" name="password" class="input" required="">
-                </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-            </form>
+            <div class="login-container">
+                <form class="form-signin" method="post" action="#" th:action="@{/loginprocessed}">
+                    <h2 class="form-signin-heading">Login</h2>
+                    <div class="input-field">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="input" required="" autofocus="">
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="input" required="">
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 </body>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>@2024 Key. All Rights Reserved | Design by Alison Nguyen</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </html>

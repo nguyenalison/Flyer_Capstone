@@ -11,6 +11,12 @@ h1 {
     margin-top: 20px;
 }
 
+
+.events-container{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .event-table {
     width: 100%;
     border-collapse: collapse;
@@ -35,4 +41,50 @@ h1 {
 
 .event-table tbody tr:hover {
     background-color: #5d5076;
+}
+
+/* Navigation bar */
+#menu {
+    background-color: #17594A; /* Set background color */
+    overflow: hidden;
+    font-family: 'Poppins', serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+#menu ul {
+    list-style-type: none; /* Remove default list styling */
+    margin: 7px;
+    /*padding: 0px;*/
+    overflow: hidden;
+}
+
+#menu ul li {
+    float: left; /* Float list items horizontally */
+}
+
+#menu ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px; /* Add padding around the text */
+    text-decoration: none;
+}
+
+#menu ul li a:hover {
+    background-color: rgba(26, 86, 71, 0.85); /* Darken the background color on hover */
+}
+
+.footer {
+    background-color: #111E2B;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
 }

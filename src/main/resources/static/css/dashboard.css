@@ -4,14 +4,45 @@ html, body{
     font-family: Poppins;
 }
 
+/* Navigation bar */
+#menu {
+    background-color: #17594A; /* Set background color */
+    overflow: hidden;
+    font-family: 'Poppins', serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+#menu ul {
+    list-style-type: none; /* Remove default list styling */
+    margin: 7px;
+    /*padding: 0px;*/
+    overflow: hidden;
+}
+
+#menu ul li {
+    float: left; /* Float list items horizontally */
+}
+
+#menu ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px; /* Add padding around the text */
+    text-decoration: none;
+}
+
+#menu ul li a:hover {
+    background-color: rgba(26, 86, 71, 0.85); /* Darken the background color on hover */
+}
+
 .welcome-dash{
     display: block;
     margin-left: 10%;
     align-items: center;
+    font-size: xx-large;
 }
-.container{
-    margin-top: 15%;
-}
+
 
 .top-landing-left{
     display: flex;
@@ -23,7 +54,7 @@ html, body{
 
 .top-landing-right{
     display: flex;
-    margin-left: 10%;
+    margin-left: 9%;
     align-items: center;
 
     text-align: center;
@@ -93,6 +124,9 @@ html, body{
     transition: .4s;
 }
 
+.row{
+    margin-left: 30%;
+}
 .submit{
     font-family: Poppins;
     color: #fff;
@@ -203,8 +237,8 @@ html, body{
 }
 
 .create-cal, .create-event, .calendar-list, .display-all-events {
-    margin: 2%;
-    font-family: Poppins;
+    margin: 1.5%;
+    font-family: Poppins, serif;
     color: #fff;
     border: none;
     outline: none;
@@ -251,3 +285,32 @@ a {
     all: unset;
 }
 
+.footer {
+    background-color: #111E2B;
+    color: white;
+    padding: 5px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
+}
+
+
+
+.footer {
+    background-color: #111E2B;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
+}

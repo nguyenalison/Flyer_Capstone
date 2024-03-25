@@ -147,3 +147,37 @@ function generateHourButtons() {
         hoursContainer.appendChild(button);
     }
 }
+
+function increaseCalendarSize(percentage) {
+    let calendar = document.querySelector('.calendar');
+
+    let currentFontSize = parseInt(window.getComputedStyle(calendar).fontSize);
+    let newFontSize = currentFontSize + currentFontSize * (percentage / 100);
+
+    // Increase the font size of the calendar and its children
+    calendar.style.fontSize = newFontSize + 'px';
+
+    let calendarChildren = calendar.querySelectorAll('*');
+    calendarChildren.forEach(child => {
+        let childFontSize = parseInt(window.getComputedStyle(child).fontSize);
+        let newChildFontSize = childFontSize + childFontSize * (percentage / 100);
+        child.style.fontSize = newChildFontSize + 'px';
+    });
+
+    // Increase other dimensions of the calendar if needed
+    // calendar.style.width = newWidth + 'px';
+    // calendar.style.height = newHeight + 'px';
+
+    // Increase the size of the buttons under the calendar
+    let buttons = document.querySelectorAll('.create-cal, .create-event, .calendar-list, .display-all-events');
+    buttons.forEach(button => {
+        let buttonFontSize = parseInt(window.getComputedStyle(button).fontSize);
+        let newButtonFontSize = buttonFontSize + buttonFontSize * (percentage / 100);
+        button.style.fontSize = (newButtonFontSize) + 'px';
+        button.style.height = parseInt(window.getComputedStyle(button).height) + parseInt(window.getComputedStyle(button).height) * ((percentage+30) / 100) + 'px';
+        button.style.width = parseInt(window.getComputedStyle(button).width) + parseInt(window.getComputedStyle(button).width) * ((percentage+30) / 100) + 'px';
+    });
+}
+
+// Example usage: Increase calendar size by 20%
+increaseCalendarSize(20);

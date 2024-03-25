@@ -24,6 +24,7 @@ function showAllEvents() {
                 dayCell.textContent = event.day;
                 startTimeCell.textContent = event.start_time;
                 endTimeCell.textContent = event.end_time;
+                console.log(startTimeCell)
                 notesCell.textContent = event.notes;
                 calendarNameCell.textContent = event.calendar_name;
             });

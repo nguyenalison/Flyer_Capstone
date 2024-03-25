@@ -55,3 +55,13 @@ function selectCalendar(calendarId) {
 
     console.log("id: " + calendarId);
 }
+
+//
+// $(document).ready(function() {
+//     $('.timepicker').datetimepicker({
+//         template: 'dropdown', // Use dropdown style
+//         showMeridian: false,   // Use 24-hour format
+//         minuteStep: 5,         // Set minute step
+//         defaultTime: false     // Clear input initially
+//     });
+// });

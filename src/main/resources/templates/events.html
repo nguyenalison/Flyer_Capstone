@@ -13,37 +13,57 @@
     <script th:src="@{/js/display_events.js}" defer></script>
 </head>
 <body>
+<nav id="menu">
+    <ul>
+        <li><a th:href="@{/login}">login</a></li>
+        <li><a th:href="@{/sign-up}">sign Up</a></li>
+        <li><a th:href="@{/logout}">logout</a></li>
+    </ul>
+</nav>
 <h1>All Events</h1>
-<table id="eventTable" class="table table-dark">
-    <thead>
-    <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Location</th>
-        <th scope="col">Day</th>
-        <th scope="col">Start Time</th>
-        <th scope="col">End Time</th>
-        <th scope="col">Notes</th>
-        <th scope="col">Calendar Name</th>
-    </tr>
-    </thead>
-    <tbody id="eventTableBody" class="event-table-body">
-    <tr scope="row" th:each="event : ${events}">
-        <td th:text="${event.title}"></td>
-        <td th:text="${event.location}"></td>
-        <td th:text="${event.day}"></td>
-        <td th:text="${event.start_time}"></td>
-        <td th:text="${event.end_time}"></td>
-        <td th:text="${event.notes}"></td>
-        <td th:text="${event.calendar_name}"></td>
-        <td>
-<!--            <button class="btn btn-primary" data-event-id="${event.id}">Update</button> &lt;!&ndash; Update button &ndash;&gt;-->
-            <a th:href="@{'/edit/' + ${event.id}}" class="btn btn-primary" role="button"> edit</a>
-            <a th:href="@{'/delete/' + ${event.id}}" class="btn btn-danger" role="button"> delete</a>
-<!--            <button class="btn btn-danger">Delete</button> &lt;!&ndash; Delete button &ndash;&gt;-->
-        </td>
-    </tr>
-    </tbody>
-</table>
-<button ><a th:href="@{/dashboard}"> < back to dash </a></button>
+<div class="events-container">
+    <table id="eventTable" class="table table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Location</th>
+            <th scope="col">Day</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Calendar Name</th>
+        </tr>
+        </thead>
+        <tbody id="eventTableBody" class="event-table-body">
+        <tr scope="row" th:each="event : ${events}">
+            <td th:text="${event.title}"></td>
+            <td th:text="${event.location}"></td>
+            <td th:text="${event.day}"></td>
+            <td th:text="${event.start_time}"></td>
+            <td th:text="${event.end_time}"></td>
+            <td th:text="${event.notes}"></td>
+            <td th:text="${event.calendar_name}"></td>
+            <td>
+                <!--            <button class="btn btn-primary" data-event-id="${event.id}">Update</button> &lt;!&ndash; Update button &ndash;&gt;-->
+                <a th:href="@{'/edit/' + ${event.id}}" class="btn btn-primary" role="button"> edit</a>
+                <a th:href="@{'/delete/' + ${event.id}}" class="btn btn-danger" role="button"> delete</a>
+                <!--            <button class="btn btn-danger">Delete</button> &lt;!&ndash; Delete button &ndash;&gt;-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button ><a th:href="@{/dashboard}"> < back to dash </a></button>
+</div>
 </body>
+<footer class="footer">
+    <div class="container">
+        <div class="col-md-12 text-center">
+            <p>@2024 Key. All Rights Reserved | Design by Alison Nguyen</p>
+        </div>
+    </div>
+</footer>
 </html>
+
+
+
+

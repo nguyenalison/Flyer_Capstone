@@ -109,3 +109,66 @@ button{
     gap: 10px;
     margin-top: 15px;
 }
+
+/* Style for the time picker */
+.bootstrap-timepicker-widget.dropdown-menu {
+    background-color: #111E2B; /* Your background color */
+    color: white;              /* Your text color */
+    font-family: Poppins;      /* Your font family */
+    border: none;              /* Remove border */
+}
+
+.bootstrap-timepicker-widget.dropdown-menu .bootstrap-timepicker-hour,
+.bootstrap-timepicker-widget.dropdown-menu .bootstrap-timepicker-minute,
+.bootstrap-timepicker-widget.dropdown-menu .bootstrap-timepicker-second {
+    font-size: larger;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+.bootstrap-timepicker-widget.dropdown-menu a {
+    font-size: larger;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.bootstrap-timepicker-widget.dropdown-menu a:hover {
+    font-size: larger;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.bootstrap-timepicker-widget.dropdown-menu .disabled {
+    font-size: larger;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.bootstrap-timepicker-widget.dropdown-menu .picker-switch {
+    font-size: larger;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.bootstrap-timepicker-widget.dropdown-menu .prev,
+.bootstrap-timepicker-widget.dropdown-menu .next {
+    font-size: larger;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+#calendar-select{
+    margin-top: 40px;
+}
+a {
+    all: unset;
+    font-size: larger;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}

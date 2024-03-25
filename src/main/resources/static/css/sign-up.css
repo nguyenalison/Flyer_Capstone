@@ -1,150 +1,158 @@
-/* selects element */
-body{
-    background-color: #111E2B;
-    color: white;
-    font-family: Poppins;
+body {
+    background-color: #111E2B; /* Use a light background color */
+    font-family: 'Poppins', sans-serif;
+    color: white; /* Use a darker text color for better readability */
+    margin: 0;
+    padding: 0;
 }
 
-/* selects class */
-.container {
-    margin-top: 7%;
-}
-
-.login-description{
-    margin-top: 10px;
-    font-size: 20px;
-    font-style: italic;
-    /*font-weight: light;*/
-}
-
-
-.top-landing-left{
+.login-container {
+    box-shadow: 0px 10px 50px 15px rgba(23, 79, 66, 0.85);
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #17594A;
+    width: 80%; /* Adjust the width as needed */
+    max-width: 400px; /* Set a maximum width */
+    height: 500px; /* Set the height as needed */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    text-align: end;
+    justify-content: center;
+    margin: 20% auto 0;
 }
 
+.signup-container {
+    box-shadow: 0px 10px 50px 15px rgba(23, 79, 66, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #17594A;
+    width: 100%; /* Adjust the width as needed */
+    max-width: 400px; /* Set a maximum width */
+    height: 900px; /* Set the height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto 0;
+}
+
+.right {
+    display: flex;
+    /*justify-content: center;*/
+    /*align-items: flex-start;*/
+    position: relative;
+    height: 100vh; /* Ensure the container takes the full height of the viewport */
+}
+.form-signin{
+    margin: 0 7% 0 7%;
+}
+
+.form-signin-heading{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.container {
+    margin-top: 5%; /* Add more space at the top */
+}
+
+.top-landing-left {
+    text-align: center; /* Center align text */
+}
 
 .welcome{
+    font-size: 3em;
+    margin-top: 20px;
+    /*margin-bottom: 20px;*/
+}
+
+.welcome-flyer {
+    font-size: 3em;
+    margin-top: 20px;
+    margin-bottom: 20px;
     letter-spacing: 10px;
-    text-align: right;
-
 }
 
-.flyer{
-    letter-spacing: 10px;
-    display: flex;
-    justify-self: end;
-    align-items: end;
-}
-
-
-.row{
-    justify-content: center;
-}
-
-.right{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-.get-started{
-    border-radius: 20px;
-    font-size: 200%;
-    margin-left: 35%;
+.login-description {
+    font-size: 1.6em;
     margin-top: 10px;
+    font-style: italic;
 }
 
-.logo {
-    position: relative;
-    height: 350px;
-    width: 350px;
-    background-color: #bbb;
-    border-radius: 50%;
+.input-field {
+    margin-bottom: 25px;
+}
+
+label {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: large;
 }
 
-
-/* selects input of type text */
-input[type="text"]{
-    font-size: larger;
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-}
-
-button{
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-}
-.create-account{
-    margin-bottom: 20px;
-    /*font-size: 30px;*/
-}
-.input-field{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding: 0 10px 0 10px;
-    font-size: 20px;
-    color: #96979c;
-}
-.input{
-    height: 45px;
+.input {
+    height: 40px;
     width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #6D7634;
-    outline: none;
-    margin-bottom: 30px;
-    color: #c3c4ca;
-}
-.input-box .input-field label{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    pointer-events: none;
-    transition: .5s;
-}
-.input-field input:focus ~ label
-{
-    top: -10px;
-    font-size: 14px;
-}
-
-/* selects labels that have class inputfield whos input is valid following */
-.input-field input:valid ~ label
-{
-    top: -10px;
-    font-size: 13px;
-    color: #5d5076;
-}
-.input-field .input:focus, .input-field .input:valid{
-    border-bottom: 1px solid #743ae1;
-}
-.submit{
-    color: #fff;
-    border: none;
-    outline: none;
-    height: 45px;
-    background: #6D7634;
+    padding: 5px 10px;
+    font-size: 1em;
     border-radius: 5px;
-    transition: .4s;
+    border: 1px solid #c7c4c4;
+    background-color: #a7b9a7;
 }
 
-
-.submit:hover{
-    background: rgba(37, 95, 156, 0.937);
+.btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #8EAC50; /* Use a primary color for buttons */
     color: #fff;
 }
-.signin{
-    text-align: center;
-    font-size: small;
-    margin-top: 25px;
+
+.btn:hover {
+    background-color: #1E2B11; /* Darken the color on hover */
 }
 
+/* Navigation bar */
+#menu {
+    background-color: #17594A; /* Set background color */
+    overflow: hidden;
+    font-family: 'Poppins', serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+#menu ul {
+    list-style-type: none; /* Remove default list styling */
+    margin: 7px;
+    /*padding: 0px;*/
+    overflow: hidden;
+}
+
+#menu ul li {
+    float: left; /* Float list items horizontally */
+}
+
+#menu ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px; /* Add padding around the text */
+    text-decoration: none;
+}
+
+#menu ul li a:hover {
+    background-color: rgba(26, 86, 71, 0.85); /* Darken the background color on hover */
+}
+
+.footer {
+    background-color: #111E2B;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
+}
