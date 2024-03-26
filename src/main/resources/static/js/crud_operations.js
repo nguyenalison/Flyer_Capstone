@@ -1,4 +1,5 @@
 function showPopup(className) {
+    console.log("showing pop to create calendar")
     document.getElementById(className).style.display = 'block';
     let blur = document.getElementById('blur');
     blur.classList.toggle('blur');
@@ -99,6 +100,7 @@ function hideCalendars() {
 }
 
 function closePopupOutside(event) {
+    console.log("in close pop outside")
     if (!document.getElementById('popup').contains(event.target) && !document.getElementById('blur').contains(event.target)) {
         document.getElementById('popup').style.display = 'none';
         let blur = document.getElementById('blur');

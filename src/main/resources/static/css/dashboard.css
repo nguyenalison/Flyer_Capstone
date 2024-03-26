@@ -190,20 +190,29 @@ html, body{
 }
 
 #popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #111E2B;
-    color: white;
-    font-family: Poppins;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    width: 300px;
-    text-align: center;
+    /*display: none;*/
+    /*position: fixed;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    /*background-color: #111E2B;*/
+    /*color: white;*/
+    /*font-family: Poppins;*/
+    /*padding: 20px;*/
+    /*border-radius: 10px;*/
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);*/
+    /*z-index: 1000;*/
+    /*width: 300px;*/
+    /*text-align: center;*/
+
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        /* Other styles */
+
 }
 
 .blur{

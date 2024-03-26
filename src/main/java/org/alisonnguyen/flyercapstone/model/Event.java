@@ -25,9 +25,10 @@ public class Event {
     @JoinColumn(name = "calendar_id")
     private Calendar calendar;
 
-    public Event(String title, String location, String start_time, String end_time, String notes, String calendar_name) {
+    public Event(String title, String location, String day, String start_time, String end_time, String notes, String calendar_name) {
         this.title = title;
         this.location = location;
+        this.day = day;
         this.start_time = start_time;
         this.end_time = end_time;
         this.notes = notes;

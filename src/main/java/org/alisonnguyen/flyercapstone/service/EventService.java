@@ -10,4 +10,7 @@ public interface EventService {
     public void deleteEvent(long id);
 
     public Event findEventById(Long id);
+
+
+
 }
